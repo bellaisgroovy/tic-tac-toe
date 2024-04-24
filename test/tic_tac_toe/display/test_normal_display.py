@@ -7,14 +7,25 @@ class TestNormalDisplay(TestCase):
     @patch('builtins.print')
     def test_display_normalBoard_prints(self, mocked_print):
         display = NormalDisplay()
-        board = [[1, 2, 0], [0, 2, 1], [0, 2, 0]]
+        board = [[0, 2, 0], [0, 2, 1], [1, 2, 0], ]
 
         display.display(board)
 
-        left = call('|', end='')
-        space = call(' ', end='|')
-        x = call('X', end='|')
-        o = call('O', end='|')
-        end = call()
-        expected_calls = [left, x, o, space, end, left, space, o, x, end, left, space, o, space, end]
+        expected_calls = [
+            call('|', end=''),
+            call(' ', end='|'),
+            call(' ', end='|'),
+            call('X', end='|'),
+            call(),
+            call('|', end=''),
+            call('O', end='|'),
+            call('O', end='|'),
+            call('O', end='|'),
+            call(),
+            call('|', end=''),
+            call(' ', end='|'),
+            call('X', end='|'),
+            call(' ', end='|'),
+            call()
+        ]
         self.assertEqual(expected_calls, mocked_print.mock_calls, )
