@@ -82,6 +82,16 @@ class TestNormalBoardChecker(TestCase):
         expected = GameState.WIN
         self.assertEqual(expected, is_win_loss_or_ongoing)
 
+    def test_isWinOrLoss_otherDiagonalWin_win(self):
+        board_checker = NormalBoardChecker()
+        board = [[0, 0, 1], [0, 1, 0], [1, 0, 0]]
+
+        size_line_to_win = 3
+        is_win_loss_or_ongoing = board_checker.win_or_loss(board)
+
+        expected = GameState.WIN
+        self.assertEqual(expected, is_win_loss_or_ongoing)
+
     def test_isWinOrLoss_diagonalLoss_loss(self):
         board_checker = NormalBoardChecker()
         board = [[2, 0, 0], [0, 2, 0], [0, 0, 2]]

@@ -13,11 +13,11 @@ class NormalDisplay(Display):
             for y, symbol in enumerate(row):
                 match symbol:
                     case 0:
-                        nice_board[x][y] = " "
+                        nice_board[y][x] = " "
                     case 1:
-                        nice_board[x][y] = "X"
+                        nice_board[y][x] = "X"
                     case 2:
-                        nice_board[x][y] = "O"
+                        nice_board[y][x] = "O"
         return nice_board
 
     @staticmethod

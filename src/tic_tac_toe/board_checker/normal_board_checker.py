@@ -27,7 +27,8 @@ class NormalBoardChecker(BoardChecker):
                 is_match = (
                         NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_x) or
                         NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_y) or
-                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_xy)
+                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_xy) or
+                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_other_xy)
                 )
                 if is_match:
                     if symbol == 1:
@@ -73,5 +74,9 @@ class NormalBoardChecker(BoardChecker):
         return {'x': coord['x'] + 1, 'y': coord['y'] + 1}
 
     @staticmethod
+    def get_next_coord_other_xy(coord):
+        return {'x': coord['x'] - 1, 'y': coord['y'] + 1}
+
+    @staticmethod
     def get_next_coord_x(coord):
-        return {'x': coord['x'] + 1, 'y': coord['y']}
+        return {'x': coord['x'] - 1, 'y': coord['y']}
