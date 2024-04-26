@@ -3,7 +3,7 @@ class Loader:
         self.obj = obj
         self.reader = reader()
 
-    def data_to_obj_list(self):
+    def get_obj_list(self, path):
         return
 
     def get_data(self, input_data):
