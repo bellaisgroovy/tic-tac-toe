@@ -8,6 +8,7 @@ from testing.login.data.loader.stub_json_loader import StubLoader
 class TestCustomerLogin(TestCase):
     loader = StubLoader()
     customers = loader.get_obj_list()
+
     def test_findUserOrNone_validInput_customer(self):
         customers = self.customers
 
@@ -33,5 +34,3 @@ class TestCustomerLogin(TestCase):
 
         expected_customer = self.customers[1]
         self.assertEqual(expected_customer, customer)
-
-
