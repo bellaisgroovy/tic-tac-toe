@@ -1,3 +1,3 @@
 class Reader:
-    def get_data(self, data, obj):
+    def get_data(self, input_data):
         return

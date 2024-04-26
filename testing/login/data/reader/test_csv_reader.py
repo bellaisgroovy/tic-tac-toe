@@ -7,22 +7,21 @@ class MyTestCase(TestCase):
     def test_csvToJson_1validRecord_matchingJson(self):
         reader = CsvReader()
 
-        json_list = reader.csv_to_json(path='test_data.csv')
+        json_list = reader.csv_to_json(path='../test_data.csv')
 
         expected_json = [{'customer_id': '0', 'username': 'bellaisgroovy', 'password': 'basilplant'}]
         self.assertEqual(expected_json, json_list)
 
-    def test_jsonToObjs_1validJson_matchingObj(self):
+    def test_csvToJson_3validRecords_matchingJson(self):
         reader = CsvReader()
-        json_list = [{'customer_id': '0', 'username': 'bellaisgroovy', 'password': 'basilplant'}]
-        obj = Customer
 
-        obj_list = reader.json_to_objs(json_list, obj)
+        json_list = reader.csv_to_json(path='../big_test_data.csv')
 
-        expected_obj_list = [Customer(
-            json_list[0]['customer_id'],
-            json_list[0]['username'],
-            json_list[0]['password'],
-        )]
+        expected_json = [
+            {'customer_id': '0', 'username': 'weewoo', 'password': 'n333nawWW'},
+            {'customer_id': '1', 'username': 'mr_strong', 'password': 'str0nk'},
+            {'customer_id': '2', 'username': 'mames_nond', 'password': 'b0ndYul4ncE?'},
+        ]
+        self.assertEqual(expected_json, json_list)
 
-        self.assertEqual(expected_obj_list, obj_list)
+
