@@ -6,9 +6,9 @@ class JsonLoader(Loader):
     def __init__(self, obj, reader):
         super().__init__(obj, reader)
 
-    def data_to_obj_list(self, input_data):
+    def get_obj_list(self, path):
         obj_list = []
-        for record in self.get_data(input_data):
+        for record in self.get_data(path):
             instance = self.obj(**record)
             obj_list.append(instance)
         return obj_list
