@@ -7,7 +7,7 @@ from unittest import TestCase
 
 class TestJsonLoader(TestCase):
     def test_dataToObjList_stubReader_matchingObjList(self):
-        loader = JsonLoader(obj=Customer, reader=StubCsvReader)
+        loader = JsonLoader(obj=Customer, reader=StubCsvReader())
         path = '../test_data.csv'
 
         obj_list = loader.get_obj_list(path)
@@ -33,8 +33,8 @@ class TestJsonLoader(TestCase):
         self.assertEqual(expected_obj_list, obj_list)
 
     def test_dataToObjList_csvReader_matchingObjList(self):
-        loader = JsonLoader(obj=Customer, reader=CsvReader)
-        path = '../test_data.csv'
+        loader = JsonLoader(obj=Customer, reader=CsvReader())
+        path = '../big_test_data.csv'
 
         obj_list = loader.get_obj_list(path)
 
