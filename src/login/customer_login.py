@@ -3,11 +3,12 @@ from os import getcwd, path
 
 
 class CustomerLogin(Login):
-    def __init__(self, loader):
+    def __init__(self, loader, customer_path):
         super().__init__(loader)
+        self.customer_path = customer_path
 
     def login(self):
-        customers = self.get_obj_list(path.join(getcwd(), 'customers.csv'))
+        customers = self.get_obj_list(path.join(getcwd(), self.customer_path))
 
         user = None
         while user is None:

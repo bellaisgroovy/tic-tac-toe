@@ -6,3 +6,6 @@ class GameState(Enum):
     LOSS = 0
     DRAW = 1
     WIN = 2
+
+    def __eq__(self, other):
+        return self.value == other.value
