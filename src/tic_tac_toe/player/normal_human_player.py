@@ -42,19 +42,19 @@ class NormalHumanPlayer(Player):
             case 7:
                 xy_dict = {"x": 0, "y": 0}
             case 8:
-                xy_dict = {"x": 1, "y": 0}
-            case 9:
-                xy_dict = {"x": 2, "y": 0}
-            case 4:
                 xy_dict = {"x": 0, "y": 1}
+            case 9:
+                xy_dict = {"x": 0, "y": 2}
+            case 4:
+                xy_dict = {"x": 1, "y": 0}
             case 5:
                 xy_dict = {"x": 1, "y": 1}
             case 6:
-                xy_dict = {"x": 2, "y": 1}
-            case 1:
-                xy_dict = {"x": 0, "y": 2}
-            case 2:
                 xy_dict = {"x": 1, "y": 2}
+            case 1:
+                xy_dict = {"x": 2, "y": 0}
+            case 2:
+                xy_dict = {"x": 2, "y": 1}
             case 3:
                 xy_dict = {"x": 2, "y": 2}
             case _:
