@@ -122,3 +122,140 @@ class TestNormalBoardChecker(TestCase):
         expected = None
         self.assertEqual(expected, is_win_loss_or_ongoing)
 
+    def test_isWinOrLoss_5173286_none(self):
+        board_checker = NormalBoardChecker()
+        board = [[1, 2, 0], [0, 1, 1], [2, 1, 2]]
+
+        is_win_loss_or_ongoing = board_checker.win_or_loss(board)
+
+        expected = None
+        self.assertEqual(expected, is_win_loss_or_ongoing)
+
+    def test_isWinOrLoss_5173286Mirror_none(self):
+        board_checker = NormalBoardChecker()
+        board = [[0, 2, 1], [1, 1, 0], [2, 1, 2]]
+
+        is_win_loss_or_ongoing = board_checker.win_or_loss(board)
+
+        expected = None
+        self.assertEqual(expected, is_win_loss_or_ongoing)
+
+    def test_isMatchX_matchX_true(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [1, 0, 0],
+            [1, 0, 0],
+            [1, 0, 0]
+        ]
+        inc_x = board_checker.get_next_coord_x
+        coord = {'x': 0, 'y': 0}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertTrue(is_match)
+
+    def test_isMatchX_noMatchX_false(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [1, 0, 0],
+            [1, 0, 0],
+            [0, 0, 0]
+        ]
+        inc_x = board_checker.get_next_coord_y
+        coord = {'x': 0, 'y': 0}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertFalse(is_match)
+
+    def test_isMatchY_matchY_true(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [1, 1, 1]
+        ]
+        inc_x = board_checker.get_next_coord_y
+        coord = {'x': 2, 'y': 0}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertTrue(is_match)
+
+    def test_isMatchY_noMatchY_false(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [1, 1, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ]
+        inc_x = board_checker.get_next_coord_y
+        coord = {'x': 0, 'y': 0}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertFalse(is_match)
+
+    def test_isMatchXY_matchXY_true(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [1, 0, 0],
+            [0, 1, 0],
+            [0, 0, 1]
+        ]
+        inc_x = board_checker.get_next_coord_xy
+        coord = {'x': 0, 'y': 0}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertTrue(is_match)
+
+    def test_isMatchXY_noMatchXY_false(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [1, 0, 0],
+            [0, 0, 0],
+            [0, 0, 1]
+        ]
+        inc_x = board_checker.get_next_coord_xy
+        coord = {'x': 0, 'y': 0}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertFalse(is_match)
+
+    def test_isMatchOtherXY_matchOtherXY_true(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [0, 0, 1],
+            [0, 1, 0],
+            [1, 0, 0]
+        ]
+        inc_x = board_checker.get_next_coord_other_xy
+        coord = {'x': 0, 'y': 2}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertTrue(is_match)
+
+    def test_isMatchOtherXY_noMatchOtherXY_false(self):
+        board_checker = NormalBoardChecker()
+        board = [
+            [1, 0, 1],
+            [0, 0, 0],
+            [0, 0, 1]
+        ]
+        inc_x = board_checker.get_next_coord_other_xy
+        coord = {'x': 0, 'y': 2}
+        matches = 1
+
+        is_match = board_checker.is_match(board, coord, matches, inc_x)
+
+        self.assertFalse(is_match)

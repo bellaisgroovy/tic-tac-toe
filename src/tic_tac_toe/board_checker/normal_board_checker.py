@@ -62,7 +62,8 @@ class NormalBoardChecker(BoardChecker):
 
         next_coord = get_next_coord(coord)
 
-        in_range = 0 < next_coord['x'] < len(board) and 0 < next_coord['y'] < len(board)
+
+        in_range = 0 <= next_coord['x'] < len(board) and 0 <= next_coord['y'] < len(board)
         is_match = False
         if in_range:
             is_match = board[coord['x']][coord['y']] == board[next_coord['x']][next_coord['y']]
@@ -79,13 +80,13 @@ class NormalBoardChecker(BoardChecker):
         return {'x': coord['x'], 'y': coord['y'] + 1}
 
     @staticmethod
+    def get_next_coord_x(coord):
+        return {'x': coord['x'] + 1, 'y': coord['y']}
+
+    @staticmethod
     def get_next_coord_xy(coord):
         return {'x': coord['x'] + 1, 'y': coord['y'] + 1}
 
     @staticmethod
     def get_next_coord_other_xy(coord):
-        return {'x': coord['x'] - 1, 'y': coord['y'] + 1}
-
-    @staticmethod
-    def get_next_coord_x(coord):
-        return {'x': coord['x'] - 1, 'y': coord['y']}
+        return {'x': coord['x'] + 1, 'y': coord['y'] - 1}
