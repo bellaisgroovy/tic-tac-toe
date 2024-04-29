@@ -10,7 +10,7 @@ class JsonLoader(Loader):
         obj_list = []
         for record in self.get_data(path):
             try:
-                instance = self.obj(**record)
+                instance = self.obj(**record)  # creates instance with records data
                 obj_list.append(instance)
             except TypeError:
                 print('There is bad login data in customers.csv')

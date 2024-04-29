@@ -3,4 +3,4 @@ class BoardChecker:
         return  # Boolean
 
     def get_end_state(self, board, size_line_to_win):
-        return  # -1 = game ongoing 0 = draw
+        return
