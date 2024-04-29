@@ -1,5 +1,5 @@
 from src.menu import Menu
-from tic_tac_toe.data.game_state import GameState
+from src.tic_tac_toe.data.game_state import GameState
 
 
 class LoginMenu(Menu):
@@ -13,20 +13,17 @@ class LoginMenu(Menu):
         end_state = self.game.play()
         if end_state == GameState.DRAW:
             print('It was a draw.')
-        if self.current_user is None:
-            if end_state.value == GameState.WIN.value:
-                print('X won!')
-            if end_state == GameState.LOSS:
-                print('O won!')
+        elif end_state == GameState.LOSS:
+            print('O won!')
+        elif self.current_user is None and end_state.value == GameState.WIN.value:
+            print('X won!')
         else:
-            if end_state == GameState.WIN:
-                print(f'{self.current_user} won!')
-            if end_state == GameState.LOSS:
-                print('O won!')
+            print(f'{self.current_user} won!')
         return end_state
 
     def quit(self):
-        quit('bye xo')
+        print('bye xo')
+        exit(0)
 
     def login(self):
         self.current_user = self.login_handler.login()
