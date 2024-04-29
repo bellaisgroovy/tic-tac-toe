@@ -19,23 +19,21 @@ class NormalBoardChecker(BoardChecker):
 
     @staticmethod
     def win_or_loss(board):
+        # for each cell
         for x in range(len(board)):
             for y in range(len(board)):
                 coord = {'x': x, 'y': y}
-                matches = 1
                 symbol = board[x][y]
-                is_match = (
-                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_x) or
-                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_y) or
-                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_xy) or
-                        NormalBoardChecker.is_match(board, coord, matches, NormalBoardChecker.get_next_coord_other_xy)
-                )
+
+                is_match = NormalBoardChecker.is_match(board, coord)
+
                 if is_match:
                     if symbol == 1:
                         return GameState.WIN
                     elif symbol == 2:
                         return GameState.LOSS
-        return None  # if not win or loss then None
+                else:
+                    return None
 
     @staticmethod
     def is_full(board):
@@ -47,20 +45,31 @@ class NormalBoardChecker(BoardChecker):
         return is_draw
 
     @staticmethod
-    def is_match(board, coord, matches, get_next_coord):
+    def is_match(board, coord):
+        matches = 1
+        is_match = (  # loop was more verbose so minor duplication
+                NormalBoardChecker.is_dir_match(board, coord, matches, NormalBoardChecker.get_next_coord_x) or
+                NormalBoardChecker.is_dir_match(board, coord, matches, NormalBoardChecker.get_next_coord_y) or
+                NormalBoardChecker.is_dir_match(board, coord, matches, NormalBoardChecker.get_next_coord_xy) or
+                NormalBoardChecker.is_dir_match(board, coord, matches, NormalBoardChecker.get_next_coord_other_xy)
+        )
+        return is_match
+
+    @staticmethod
+    def is_dir_match(board, coord, matches, get_next_coord):
         if matches == len(board):
             return True
 
         next_coord = get_next_coord(coord)
 
-        in_range = next_coord['x'] < len(board) and next_coord['y'] < len(board)
+        in_range = 0 < next_coord['x'] < len(board) and 0 < next_coord['y'] < len(board)
         is_match = False
         if in_range:
             is_match = board[coord['x']][coord['y']] == board[next_coord['x']][next_coord['y']]
 
         if in_range and is_match:
             matches += 1
-            has_won = NormalBoardChecker.is_match(board, next_coord, matches, get_next_coord)
+            has_won = NormalBoardChecker.is_dir_match(board, next_coord, matches, get_next_coord)
             if has_won:
                 return True
         return False
