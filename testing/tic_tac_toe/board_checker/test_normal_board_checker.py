@@ -64,7 +64,7 @@ class TestNormalBoardChecker(TestCase):
 
     def test_isWinOrLoss_verticalWin_win(self):
         board_checker = NormalBoardChecker()
-        board = [[1, 1, 1], [0, 0, 0], [0, 0, 0]]
+        board = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
 
         size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
@@ -86,11 +86,30 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[0, 0, 1], [0, 1, 0], [1, 0, 0]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = GameState.WIN
         self.assertEqual(expected, is_win_loss_or_ongoing)
+
+    def test_isDirMatch_otherDiagonalMatch_True(self):
+        board_checker = NormalBoardChecker()
+        board = [[0, 0, 1], [0, 1, 0], [1, 0, 0]]
+
+        is_match = board_checker.is_dir_match(
+            board, coord={'x': 0, 'y': 2},
+            matches=1,
+            get_next_coord=board_checker.get_next_coord_other_xy
+        )
+
+        self.assertTrue(is_match)
+
+    def test_isMatch_otherDiagonalMatch_True(self):
+        board_checker = NormalBoardChecker()
+        board = [[0, 0, 1], [0, 1, 0], [1, 0, 0]]
+
+        is_match = board_checker.is_match(board, coord={'x': 0, 'y': 2})
+
+        self.assertTrue(is_match)
 
     def test_isWinOrLoss_diagonalLoss_loss(self):
         board_checker = NormalBoardChecker()
@@ -151,7 +170,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 0}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertTrue(is_match)
 
@@ -166,7 +185,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 0}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertFalse(is_match)
 
@@ -181,7 +200,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 2, 'y': 0}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertTrue(is_match)
 
@@ -196,7 +215,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 0}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertFalse(is_match)
 
@@ -211,7 +230,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 0}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertTrue(is_match)
 
@@ -226,7 +245,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 0}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertFalse(is_match)
 
@@ -241,7 +260,7 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 2}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertTrue(is_match)
 
@@ -256,6 +275,6 @@ class TestNormalBoardChecker(TestCase):
         coord = {'x': 0, 'y': 2}
         matches = 1
 
-        is_match = board_checker.is_match(board, coord, matches, inc_x)
+        is_match = board_checker.is_dir_match(board, coord, matches, inc_x)
 
         self.assertFalse(is_match)
