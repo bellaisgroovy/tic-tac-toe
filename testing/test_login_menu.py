@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch, call
-from testing.tic_tac_toe.game.stub_game import StubWinGame, StubDrawGame, StubLoseGame
+from testing.tic_tac_toe.game.stub_game import StubWinGame, StubDrawGame, StubLoseGame, FakeWinLoseWin
 from src.login_menu import LoginMenu
 from testing.login.stub_login import StubLogin
 
@@ -42,4 +42,20 @@ class TestLoginMenu(TestCase):
 
         expected_calls = [call('O won!')]
         self.assertEqual(expected_calls, mocked_print.mock_calls)
+
+    @patch('builtins.print')
+    def test_play_fakeMultipleCalls_winLossWin(self, mocked_print):
+        menu = LoginMenu(FakeWinLoseWin(), StubLogin)
+
+        menu.play()
+        menu.play()
+        menu.play()
+
+        expected_calls = [
+            call('X won!'),
+            call('O won!'),
+            call('X won!'),
+        ]
+        self.assertEqual(expected_calls, mocked_print.mock_calls)
+
 
