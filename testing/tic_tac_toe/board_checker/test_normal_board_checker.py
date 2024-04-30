@@ -56,7 +56,6 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = GameState.WIN
@@ -66,7 +65,6 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = GameState.WIN
@@ -76,7 +74,6 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = GameState.WIN
@@ -115,7 +112,6 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[2, 0, 0], [0, 2, 0], [0, 0, 2]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = GameState.LOSS
@@ -125,7 +121,6 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[1, 1, 0], [0, 1, 0], [0, 0, 0]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = None
@@ -135,7 +130,6 @@ class TestNormalBoardChecker(TestCase):
         board_checker = NormalBoardChecker()
         board = [[2, 2, 0], [0, 1, 1], [0, 0, 0]]
 
-        size_line_to_win = 3
         is_win_loss_or_ongoing = board_checker.win_or_loss(board)
 
         expected = None
