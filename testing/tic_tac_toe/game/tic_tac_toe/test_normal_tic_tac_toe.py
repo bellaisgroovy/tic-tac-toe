@@ -30,7 +30,7 @@ class TestNormalTicTacToe(TestCase):
 
     @patch('src.tic_tac_toe.player.normal_human_player.NormalHumanPlayer.input_wrap',
            side_effect=[5, 1, 7, 3, 2, 8, 6, 4, 9])
-    def test_play_input517328649_draw(self, mock_input):
+    def test_play_inputLShape_draw(self, mock_input):
         tic_tac_toe = NormalTicTacToe()
 
         end_state = tic_tac_toe.play()
