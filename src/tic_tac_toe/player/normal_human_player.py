@@ -7,8 +7,8 @@ class NormalHumanPlayer(Player):
         print("Which square would you like to move in?")
         while not valid:
             square = self.__get_input_square()
-            xy_dict = self.__assign_xy_to_square(square)
-            valid = self.__is_valid_move(board, xy_dict)
+            xy_dict = self.assign_xy_to_square(square)
+            valid = self.is_valid_move(board, xy_dict)
             if not valid:
                 self.__print_move_instructions()
         return xy_dict
@@ -29,7 +29,7 @@ class NormalHumanPlayer(Player):
         return square
 
     @staticmethod
-    def __is_valid_move(board, move_dict):
+    def is_valid_move(board, move_dict):
         x = move_dict["x"]
         y = move_dict["y"]
         if board[x][y] != 0:
@@ -38,7 +38,7 @@ class NormalHumanPlayer(Player):
         return True
 
     @staticmethod
-    def __assign_xy_to_square(square):
+    def assign_xy_to_square(square):
         match square:
             case 7:
                 xy_dict = {"x": 0, "y": 0}
