@@ -21,9 +21,7 @@ class NormalBoardChecker(BoardChecker):
     def win_or_loss(board):
         # for each cell
         for x in range(len(board)):
-            print('x',x)
             for y in range(len(board)):
-                print('y',y)
                 coord = {'x': x, 'y': y}
                 symbol = board[x][y]
 
@@ -47,7 +45,6 @@ class NormalBoardChecker(BoardChecker):
 
     @staticmethod
     def is_match(board, coord):
-        print('coord', coord)
         matches = 1
         is_match = (  # loop was more verbose so minor duplication
                 NormalBoardChecker.is_dir_match(board, coord, matches, NormalBoardChecker.get_next_coord_x) or
