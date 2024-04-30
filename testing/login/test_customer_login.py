@@ -28,7 +28,7 @@ class TestCustomerLogin(TestCase):
         'src.login.customer_login.CustomerLogin.get_username_password',
         return_value=(customers[1].username, customers[1].password))
     def test_login_validInput_customer(self, mock_user_pwd):
-        login = CustomerLogin(self.loader)
+        login = CustomerLogin(self.loader, 'arbitrary string')
 
         customer = login.login()
 
