@@ -31,7 +31,7 @@ class TestNormalHumanPlayer(unittest.TestCase):
 
         move_dict = player.move(board)
 
-        expected_dict = {'x': 0, 'y': 2}
+        expected_dict = {'x': 2, 'y': 0}
         self.assertEqual(move_dict, expected_dict)
 
     @patch('src.tic_tac_toe.player.normal_human_player.NormalHumanPlayer.input_wrap', side_effect=["0", "3"])
