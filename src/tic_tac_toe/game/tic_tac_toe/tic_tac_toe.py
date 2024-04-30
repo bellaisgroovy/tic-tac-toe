@@ -38,7 +38,7 @@ class TicTacToe(Game):
         self.displayer.display(board)
 
     def is_game_over(self, board):
-        is_game_over = self.board_checker.is_game_over(board)
+        is_game_over = self.board_checker.is_game_over(board, size_line_to_win=3)
         return is_game_over
 
     def get_end_state(self, board):

@@ -1,6 +1,7 @@
 from src.tic_tac_toe.display.display import Display
 from copy import deepcopy
 
+
 class NormalDisplay(Display):
     def display(self, board):
         nice_board = self.__replace_symbols(board)

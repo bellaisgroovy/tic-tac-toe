@@ -1,6 +1,5 @@
 from unittest import TestCase
 from src.login.data.reader.csv_reader import CsvReader
-from src.login.data.customer import Customer
 
 
 class TestCsvReader(TestCase):

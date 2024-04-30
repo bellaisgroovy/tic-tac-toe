@@ -58,47 +58,7 @@ Quit
 '''
         return options
 
+
 if __name__ == '__main__':
     index = Index()
     index.start()
-
-# customers_path = path.join(path.pardir, 'customers.csv')
-# loader = JsonLoader(Customer, CsvReader())
-# login = CustomerLogin(loader, customers_path)
-# game = NormalTicTacToe()
-# menu = LoginMenu(game, login)
-#
-#
-# print('Welcome to Tic-Tac-Toe')
-# while True:
-#     if menu.get_current_user() is None:
-#         options = '''
-# Please input a listed option.
-#
-# Play
-# Login
-# Quit
-# '''
-#     else:
-#         options = f'''
-# Player : {menu.get_current_user()}
-#
-# Please input a listed option.
-#
-# Play
-# Logout
-# Quit
-# '''
-#
-#     action = input(options).lower()
-#
-#     if action == 'play' or action == 'p':
-#         menu.play()
-#     elif (action == 'login' or action == 'l') and menu.get_current_user() is None:
-#         menu.login()
-#     elif (action == 'logout' or action == 'l') and menu.get_current_user() is not None:
-#         menu.logout()
-#     elif action == 'quit' or action == 'q':
-#         menu.quit()
-#     else:
-#         print('Please input a listed option')

@@ -15,4 +15,4 @@ class NormalTicTacToe(TicTacToe):
             board_checker=NormalBoardChecker(),
             display=NormalDisplay()
     ):
-        super().__init__(no_players,size_line_to_win, player, board, board_checker, display)
+        super().__init__(no_players, size_line_to_win, player, board, board_checker, display)

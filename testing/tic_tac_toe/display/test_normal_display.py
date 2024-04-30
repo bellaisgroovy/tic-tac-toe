@@ -12,18 +12,18 @@ class TestNormalDisplay(TestCase):
         display.display(board)
 
         expected_calls = [call('|', end=''),
-         call(' ', end='|'),
-         call('O', end='|'),
-         call(' ', end='|'),
-         call(),
-         call('|', end=''),
-         call(' ', end='|'),
-         call('O', end='|'),
-         call('X', end='|'),
-         call(),
-         call('|', end=''),
-         call('X', end='|'),
-         call('O', end='|'),
-         call(' ', end='|'),
-         call()]
+                          call(' ', end='|'),
+                          call('O', end='|'),
+                          call(' ', end='|'),
+                          call(),
+                          call('|', end=''),
+                          call(' ', end='|'),
+                          call('O', end='|'),
+                          call('X', end='|'),
+                          call(),
+                          call('|', end=''),
+                          call('X', end='|'),
+                          call('O', end='|'),
+                          call(' ', end='|'),
+                          call()]
         self.assertEqual(expected_calls, mocked_print.mock_calls, )

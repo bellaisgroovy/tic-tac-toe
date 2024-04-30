@@ -1,5 +1,4 @@
 from src.login.data.loader.loader import Loader
-from src.login.data.customer import Customer
 
 
 class JsonLoader(Loader):
@@ -15,4 +14,3 @@ class JsonLoader(Loader):
             except TypeError:
                 print('There is bad login data in customers.csv')
         return obj_list
-
