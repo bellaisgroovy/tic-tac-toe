@@ -33,6 +33,7 @@ class NormalHumanPlayer(Player):
         x = move_dict["x"]
         y = move_dict["y"]
         if board[x][y] != 0:
+            print('That cell is taken!')
             return False
         return True
 
